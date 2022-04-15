@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 import { createScript } from "../utils/createScriptDecorator";
-import { ebEvents, events, TOnPlayerScoreChanged } from "../utils/events";
+import { ebEvents, events, TPlayerScoreChangedEvent } from "../utils/events";
 
 @createScript("player")
 class Player extends ScriptTypeBase {
@@ -21,8 +21,8 @@ class Player extends ScriptTypeBase {
   setScore(newScore: number) {
     this.score = newScore;
 
-    const args: Parameters<TOnPlayerScoreChanged> = [this.score];
-    this.app.fire(ebEvents["player:score:changed"], ...args);
+    const eventData: TPlayerScoreChangedEvent = { newScore: this.score };
+    this.app.fire(ebEvents["player:score:changed"], eventData);
   }
 
   onEnemyKill() {

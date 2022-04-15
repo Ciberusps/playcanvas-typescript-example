@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../../utils/createScriptDecorator";
-import { ebEvents, events } from "../../utils/events";
+import { ebEvents, events, TOnWeaponAmmoChangedEvent } from "../../utils/events";
 
 const defaultAmmoCount = 30;
 
@@ -62,7 +62,12 @@ class Shooting extends ScriptTypeBase {
 
   setAmmo(newAmmo: number) {
     this.ammo = newAmmo;
-    this.app.fire(ebEvents["weapon:ammo:changed"], this.ammo, Number.POSITIVE_INFINITY);
+
+    const data: TOnWeaponAmmoChangedEvent = {
+      ammo: this.ammo,
+      totalAmmo: Number.POSITIVE_INFINITY,
+    };
+    this.app.fire(ebEvents["weapon:ammo:changed"], data);
   }
 
   canShoot(): boolean {

@@ -16,5 +16,6 @@ export const ebEvents = {
 };
 
 // TODO: replace with updateValues(data: TOnPlayerScoreChanged);
-export type TOnPlayerScoreChanged = (newScore: number) => void;
-export type TOnWeaponAmmoChanged = (ammo: number, totalAmmo: number) => void;
+// search ctrl + shift + f -> OnCollisionStart
+export type TPlayerScoreChangedEvent = { newScore: number };
+export type TWeaponAmmoChangedEvent = { ammo: number; totalAmmo: number };

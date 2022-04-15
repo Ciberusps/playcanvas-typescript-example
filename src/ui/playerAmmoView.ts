@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../utils/createScriptDecorator";
-import { ebEvents, events, TOnWeaponAmmoChanged } from "../utils/events";
+import { ebEvents, events, TWeaponAmmoChangedEvent } from "../utils/events";
 
 @createScript("playerAmmoView")
 class PlayerAmmoView extends ScriptTypeBase {
@@ -22,7 +22,7 @@ class PlayerAmmoView extends ScriptTypeBase {
     this.app.off(ebEvents["weapon:ammo:changed"], this.updateValues, this);
   }
 
-  updateValues: TOnWeaponAmmoChanged = function (ammo, totalAmmo) {
+  updateValues({ ammo, totalAmmo }: TWeaponAmmoChangedEvent) {
     if (this.ammoCountText.element?.text) {
       this.ammoCountText.element.text = ammo.toString();
     }
@@ -30,7 +30,7 @@ class PlayerAmmoView extends ScriptTypeBase {
       this.totalAmmoCountText.element.text =
         totalAmmo === Number.POSITIVE_INFINITY ? "infinite" : totalAmmo.toString();
     }
-  };
+  }
 }
 
 export default PlayerAmmoView;

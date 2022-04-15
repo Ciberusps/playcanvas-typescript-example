@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../utils/createScriptDecorator";
-import { ebEvents, events, TOnPlayerScoreChanged } from "../utils/events";
+import { ebEvents, events, TPlayerScoreChangedEvent } from "../utils/events";
 
 @createScript("playerScoreView")
 class PlayerScoreView extends ScriptTypeBase {
@@ -20,11 +20,11 @@ class PlayerScoreView extends ScriptTypeBase {
     this.app.off(ebEvents["player:score:changed"], this.updateValues, this);
   }
 
-  updateValues: TOnPlayerScoreChanged = function (score) {
+  updateValues({ newScore }: TPlayerScoreChangedEvent) {
     if (this.scoreCountText.element?.text) {
-      this.scoreCountText.element.text = score.toString();
+      this.scoreCountText.element.text = newScore.toString();
     }
-  };
+  }
 }
 
 export default PlayerScoreView;
