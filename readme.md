@@ -21,6 +21,52 @@ Build - https://playcanv.as/p/DysznB0H
 | `npm run dev`   | Compiles tsc files and push to playcanvas.com project |
 | `npm run build` | Performs `build` and `push` to playcanvas.com project |
 
+## Conventions
+
+Scripts preferable structure
+
+```ts
+// typings first splitted by empty line
+import { ScriptTypeBase } from "../../types/ScriptTypeBase";
+
+// components second
+import { falledCheckEvents } from "./falledCheck";
+
+// utils third
+import { createScript, attrib } from "../../utils/createScriptDecorator";
+import { ebEvents, events } from "../../utils/events";
+
+// consts here
+const defaultAmmoCount = 30;
+
+@createScript("shooting")
+class Shooting extends ScriptTypeBase {
+  // attributes
+  @attrib({ type: "boolean", default: true })
+  autoReload: boolean;
+  @attrib({
+    type: "number",
+    default: 1,
+    min: 0.01,
+    description: "Reload time in seconds",
+  })
+  reloadTime: number;
+
+  // local properties
+  shotTimer: TInterval;
+  reloadingTimer: TTimeout;
+  isReloading: boolean = false;
+
+  // methods
+  initialize() {}
+
+  onDestroy() {}
+}
+
+// default export at the end
+export default Shooting;
+```
+
 ## Improvements
 
 - typescript classes cant inherit methods types from parent and also methods cant be arrow functions because they lost "this" may be somehow methods can be binded in createScriptDecorator but i didnt found how
