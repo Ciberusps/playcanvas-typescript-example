@@ -5,8 +5,9 @@ import { createScript } from "../../utils/createScriptDecorator";
 @createScript("lookAtMainCamera")
 class LookAtMainCamera extends ScriptTypeBase {
   update() {
-    // @ts-ignore
-    this.entity.lookAt(this.app.systems.camera.cameras[0].entity.getPosition());
+    const camera = this.app.systems.camera?.cameras[0];
+    if (!camera) return;
+    this.entity.lookAt(camera.entity.getPosition());
     this.entity.rotateLocal(0, 180, 0);
   }
 }

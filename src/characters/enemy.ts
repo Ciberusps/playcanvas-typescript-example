@@ -1,10 +1,10 @@
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
+
 import EnemyHpBarView from "../ui/enemyHpBarView";
 import { falledCheckEvents } from "../components/movement/falledCheck";
 
 import { createScript, attrib } from "../utils/createScriptDecorator";
 import { ebEvents } from "../utils/events";
-
-import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 @createScript("enemy")
 class Enemy extends ScriptTypeBase {
@@ -15,18 +15,15 @@ class Enemy extends ScriptTypeBase {
   hpBarView: pc.Entity;
 
   maxHp: number;
-  hpBarViewScript: EnemyHpBarView;
+  hpBarViewScript?: EnemyHpBarView;
 
   initialize() {
     this.maxHp = this.hp;
-
-    this.hpBarViewScript = (this.hpBarView.script as any)
-      ?.enemyHpBarView as EnemyHpBarView;
-    if (!this.hpBarViewScript) {
-      console.warn("[Enemy] hpBarViewScript required");
-    } else {
-      this.hpBarViewScript.updateValues(this.hp, this.maxHp);
-    }
+    this.hpBarViewScript = this.getScript<EnemyHpBarView>(
+      this.hpBarView,
+      "enemyHpBarView"
+    );
+    this.hpBarViewScript?.updateValues(this.hp, this.maxHp);
 
     this.entity.on("damage", this.tryTakeDamage, this);
     this.entity.on?.(falledCheckEvents.falled, this.onFalled, this);
@@ -35,7 +32,7 @@ class Enemy extends ScriptTypeBase {
   tryTakeDamage(damage: number) {
     this.hp -= damage;
 
-    this.hpBarViewScript.updateValues(this.hp, this.maxHp);
+    this.hpBarViewScript?.updateValues(this.hp, this.maxHp);
     if (this.hp <= 0) {
       this.die();
     }

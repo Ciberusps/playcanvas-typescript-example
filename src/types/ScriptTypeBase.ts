@@ -7,6 +7,17 @@ export class ScriptTypeBase {
   // custom holder to contain attributesData used for initialization of attributes
   attributesData?: { [key: string]: TAttributeParams };
 
+  // -- Utils
+  getScript<T>(entity: pc.Entity, scriptName: string): T | undefined {
+    const script = entity.script?.get(scriptName);
+    if (!script) {
+      // @ts-ignore
+      console.error(`[${this.entity.name}] Script ${scriptName} not found`);
+      return;
+    }
+    return script as unknown as T;
+  }
+
   // -- PLAYCANVAS stuff from here onwards
 
   // lifecycle methods
@@ -87,7 +98,7 @@ export class ScriptTypeBase {
    * @name pc.ScriptType#[initialize]
    * @description Called when script is about to run for the first time.
    */
-  on?(name: string, callback: pc.callbacks.HandleEvent, scope?: any): pc.EventHandler;
+  on?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandler;
   /**
    * @function
    * @name pc.EventHandler#off
@@ -107,7 +118,7 @@ export class ScriptTypeBase {
    * obj.off('test', handler); // Removes all handler functions, called 'test'
    * obj.off('test', handler, this); // Removes all hander functions, called 'test' with scope this
    */
-  off?(name?: string, callback?: pc.callbacks.HandleEvent, scope?: any): pc.EventHandler;
+  off?(name?: string, callback?: pc.HandleEventCallback, scope?: any): pc.EventHandler;
   /**
    * @function
    * @name pc.EventHandler#fire
@@ -151,7 +162,7 @@ export class ScriptTypeBase {
    * obj.fire('test', 1, 2); // prints 3 to the console
    * obj.fire('test', 1, 2); // not going to get handled
    */
-  once?(name: string, callback: pc.callbacks.HandleEvent, scope?: any): pc.EventHandler;
+  once?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandler;
   /**
    * @function
    * @name pc.EventHandler#hasEvent

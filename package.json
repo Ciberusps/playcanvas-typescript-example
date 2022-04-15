@@ -22,7 +22,7 @@
   "devDependencies": {
     "concurrently": "^7.0.0",
     "cross-var": "^1.1.0",
-    "playcanvas": "^1.51.7",
+    "playcanvas": "^1.53.1",
     "playcanvas-sync": "github:playcanvas/playcanvas-sync#acc64ec5b7ec8ba36f786424c217fc3c6912ae31",
     "prettier": "^2.5.1",
     "ts-loader": "^9.2.6",

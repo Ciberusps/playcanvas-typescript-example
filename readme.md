@@ -26,7 +26,7 @@ Build - https://playcanv.as/p/DysznB0H
 Scripts preferable structure
 
 ```ts
-// typings first splitted by empty line
+// typings and libs goes first, split by empty line
 import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 
 // components second
