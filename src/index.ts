@@ -1,3 +1,4 @@
+import "./utils/debugSystem";
 import "./characters/player";
 import "./components/movement/playerMovement";
 import "./components/camera";

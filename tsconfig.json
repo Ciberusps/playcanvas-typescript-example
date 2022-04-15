@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "commonjs",
+    "lib": ["esnext", "dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

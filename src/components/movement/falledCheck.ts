@@ -1,13 +1,11 @@
 import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 
+import DebugSystem from "../../utils/debugSystem";
 import { getCollisionHeight } from "../../utils";
 import { createScript, attrib } from "../../utils/createScriptDecorator";
 import { lifecycleEvents } from "../../utils/events";
-import { IS_DEV } from "../../utils/config";
 import { entityTags } from "../../utils/tags";
-
-// for script debugging change on true TODO: debug subsystem
-const IS_DEBUG = IS_DEV && false;
+import { IS_DEV } from "../../utils/config";
 
 export const falledCheckEvents = { falled: "falled" };
 const groundOffset = 0.05;
@@ -44,6 +42,7 @@ class FalledCheck extends ScriptTypeBase {
   }
 
   checkIsFalled() {
+    const isDebug = DebugSystem.isCategoryEnabled("character");
     if (!this.entity?.collision) return;
 
     const halfHeight = getCollisionHeight(this.entity.collision) / 2;
@@ -55,8 +54,9 @@ class FalledCheck extends ScriptTypeBase {
     );
     const to = new pc.Vec3(from.x, from.y - this.maxFallDistance, from.z);
 
-    IS_DEBUG &&
+    if (isDebug) {
       console.log("Raycast to find the 'ground'", { halfHeight, position, from, to });
+    }
 
     // @ts-ignore
     const result: pc.RaycastResult | undefined = this.app.systems.rigidbody.raycastFirst(
@@ -65,7 +65,9 @@ class FalledCheck extends ScriptTypeBase {
     );
 
     if (!result || !result?.entity?.tags?.has(entityTags.ground)) {
-      IS_DEBUG && console.info("Raycast has no result - falled");
+      if (isDebug) {
+        console.info("Raycast has no result - falled");
+      }
       this.entity.fire(falledCheckEvents.falled);
     }
   }
