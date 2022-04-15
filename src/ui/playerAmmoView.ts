@@ -1,7 +1,7 @@
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
+
 import { createScript, attrib } from "../utils/createScriptDecorator";
 import { ebEvents, events, TOnWeaponAmmoChanged } from "../utils/events";
-
-import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 @createScript("playerAmmoView")
 class PlayerAmmoView extends ScriptTypeBase {

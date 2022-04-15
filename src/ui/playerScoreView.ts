@@ -1,7 +1,7 @@
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
+
 import { createScript, attrib } from "../utils/createScriptDecorator";
 import { ebEvents, events, TOnPlayerScoreChanged } from "../utils/events";
-
-import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 @createScript("playerScoreView")
 class PlayerScoreView extends ScriptTypeBase {

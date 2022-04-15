@@ -1,8 +1,8 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 import { getCollisionHeight, randomNumberInRange } from "../utils";
-import { IS_DEV } from "../utils/config";
 import { attrib, createScript } from "../utils/createScriptDecorator";
+import { IS_DEV } from "../utils/config";
 import { events } from "../utils/events";
 import { ebEvents } from "../utils/events";
 import { entityTags } from "../utils/tags";

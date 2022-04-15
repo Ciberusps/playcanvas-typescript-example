@@ -1,7 +1,7 @@
-import { createScript, attrib } from "../utils/createScriptDecorator";
-import { ebEvents, events, TOnWeaponAmmoChanged } from "../utils/events";
-
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
+
+import { createScript, attrib } from "../utils/createScriptDecorator";
+import { ebEvents, events } from "../utils/events";
 
 @createScript("reloadingView")
 class ReloadingView extends ScriptTypeBase {
