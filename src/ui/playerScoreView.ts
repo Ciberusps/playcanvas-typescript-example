@@ -17,7 +17,7 @@ class PlayerScoreView extends ScriptTypeBase {
   }
 
   onDestroy() {
-    this.app.off(ebEvents["player:score:changed"], this.updateValues);
+    this.app.off(ebEvents["player:score:changed"], this.updateValues, this);
   }
 
   updateValues: TOnPlayerScoreChanged = function (score) {

@@ -1,6 +1,6 @@
-import { createScript } from "../utils/createScriptDecorator";
-
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
+
+import { createScript } from "../utils/createScriptDecorator";
 import { ebEvents, events, TOnPlayerScoreChanged } from "../utils/events";
 
 @createScript("player")
@@ -15,7 +15,7 @@ class Player extends ScriptTypeBase {
   }
 
   onDestroy() {
-    this.app.off(ebEvents["enemy:died"], this.onEnemyKill);
+    this.app.off(ebEvents["enemy:died"], this.onEnemyKill, this);
   }
 
   setScore(newScore: number) {

@@ -19,7 +19,7 @@ class PlayerAmmoView extends ScriptTypeBase {
   }
 
   onDestroy() {
-    this.app.off(ebEvents["weapon:ammo:changed"], this.updateValues);
+    this.app.off(ebEvents["weapon:ammo:changed"], this.updateValues, this);
   }
 
   updateValues: TOnWeaponAmmoChanged = function (ammo, totalAmmo) {

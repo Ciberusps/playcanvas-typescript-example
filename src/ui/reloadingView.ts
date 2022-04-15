@@ -17,7 +17,7 @@ class ReloadingView extends ScriptTypeBase {
   }
 
   onDestroy() {
-    this.app.off(ebEvents["weapon:reloading:changed"], this.updateValues);
+    this.app.off(ebEvents["weapon:reloading:changed"], this.updateValues, this);
   }
 
   updateValues(isReloading: boolean) {

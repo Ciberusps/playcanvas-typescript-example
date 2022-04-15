@@ -15,5 +15,6 @@ export const ebEvents = {
   "enemy:died": "enemy:died",
 };
 
+// TODO: replace with updateValues(data: TOnPlayerScoreChanged);
 export type TOnPlayerScoreChanged = (newScore: number) => void;
 export type TOnWeaponAmmoChanged = (ammo: number, totalAmmo: number) => void;

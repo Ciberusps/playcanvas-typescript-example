@@ -1,6 +1,8 @@
-import { createScript, attrib } from "../utils/createScriptDecorator";
-import { TJsonAttributeSchemaProp } from "../types/attributes";
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
+import { TJsonAttributeSchemaProp } from "../types/attributes";
+
+import { events } from "../utils/events";
+import { createScript, attrib } from "../utils/createScriptDecorator";
 
 const pitchLimitScheme: TJsonAttributeSchemaProp[] = [
   {
@@ -26,22 +28,26 @@ class Camera extends ScriptTypeBase {
   pitchLimit: { min: number; max: number };
 
   initialize() {
-    // pointer lock
-    this.app.mouse.on(pc.EVENT_MOUSEDOWN, () => {
-      if (pc.Mouse.isPointerLocked()) return;
+    this.app.mouse.on(pc.EVENT_MOUSEDOWN, this.lockPointer, this);
+    this.app.mouse.on(pc.EVENT_MOUSEMOVE, this.onMouseMove, this);
 
-      this.app.mouse.enablePointerLock();
-    });
-
-    // mouse move
-    this.app.mouse.on(pc.EVENT_MOUSEMOVE, this.rotate, this);
+    this.on?.(events.destroy, this.onDestroy, this);
   }
 
-  // TODO: add type
-  rotate(e: any) {
-    this.rotationY -= e.dx * this.sensivity.x;
+  onDestroy() {
+    this.app.mouse.off(pc.EVENT_MOUSEDOWN, this.lockPointer, this);
+    this.app.mouse.off(pc.EVENT_MOUSEMOVE, this.onMouseMove, this);
+  }
+
+  lockPointer() {
+    if (pc.Mouse.isPointerLocked()) return;
+    this.app.mouse.enablePointerLock();
+  }
+
+  onMouseMove(event: pc.MouseEvent) {
+    this.rotationY -= event.dx * this.sensivity.x;
     this.rotationX = pc.math.clamp(
-      this.rotationX - e.dy * this.sensivity.y,
+      this.rotationX - event.dy * this.sensivity.y,
       this.pitchLimit.min,
       this.pitchLimit.max
     );

@@ -44,8 +44,8 @@ class Spawner extends ScriptTypeBase {
   }
 
   onDestroy() {
-    this.app.off(ebEvents["player:falled"], this.spawnAtRandomPoint);
-    this.app.off(ebEvents["enemy:died"], this.spawnAtRandomPoint);
+    this.app.off(ebEvents["player:falled"], this.spawnAtRandomPoint, this);
+    this.app.off(ebEvents["enemy:died"], this.spawnAtRandomPoint, this);
   }
 
   spawnAtRandomPoint(entity: pc.Entity) {
