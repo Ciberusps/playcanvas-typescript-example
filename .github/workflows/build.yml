@@ -1,0 +1,22 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    env:
+      PLAYCANVAS_API_KEY: ${{ secrets.PLAYCANVAS_API_KEY }}
+      PLAYCANVAS_BRANCH_ID: ${{ secrets.PLAYCANVAS_BRANCH_ID }}
+      PLAYCANVAS_PROJECT_ID: ${{ secrets.PLAYCANVAS_PROJECT_ID }}
+      PLAYCANVAS_TARGET_DIR: ${{ secrets.PLAYCANVAS_TARGET_DIR }}
+      PLAYCANVAS_BAD_FILE_REG: ${{ secrets.PLAYCANVAS_BAD_FILE_REG }}
+      PLAYCANVAS_BAD_FOLDER_REG: ${{ secrets.PLAYCANVAS_BAD_FOLDER_REG }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - run: npm i
+      - run: npm run build
