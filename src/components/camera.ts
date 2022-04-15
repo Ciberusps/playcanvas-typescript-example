@@ -1,6 +1,6 @@
-import { createScript, attrib } from "./utils/createScriptDecorator";
-import { TJsonAttributeSchemaProp } from "./types/attributes";
-import { ScriptTypeBase } from "./types/ScriptTypeBase";
+import { createScript, attrib } from "../utils/createScriptDecorator";
+import { TJsonAttributeSchemaProp } from "../types/attributes";
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 const pitchLimitScheme: TJsonAttributeSchemaProp[] = [
   {
@@ -23,7 +23,7 @@ class Camera extends ScriptTypeBase {
   @attrib({ type: "vec2", default: [0.15, 0.1] })
   sensivity: pc.Vec2;
   @attrib({ type: "json", schema: pitchLimitScheme })
-  pitchLimit: any;
+  pitchLimit: { min: number; max: number };
 
   initialize() {
     // pointer lock

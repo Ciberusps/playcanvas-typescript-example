@@ -1,7 +1,7 @@
-import { createScript, attrib } from "./utils/createScriptDecorator";
-import { ebEvents, events } from "./utils/events";
+import { createScript, attrib } from "../../utils/createScriptDecorator";
+import { ebEvents, events } from "../../utils/events";
 
-import { ScriptTypeBase } from "./types/ScriptTypeBase";
+import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 
 const defaultAmmoCount = 30;
 

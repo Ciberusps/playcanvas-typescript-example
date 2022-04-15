@@ -1,6 +1,6 @@
-import { createScript } from "./utils/createScriptDecorator";
+import { createScript } from "../../utils/createScriptDecorator";
 
-import { ScriptTypeBase } from "./types/ScriptTypeBase";
+import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 
 @createScript("lookAtMainCamera")
 class LookAtMainCamera extends ScriptTypeBase {

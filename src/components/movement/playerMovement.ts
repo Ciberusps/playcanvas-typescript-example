@@ -1,9 +1,9 @@
-import { createScript, attrib } from "./utils/createScriptDecorator";
-import { entityTags } from "./utils/tags";
-import { ebEvents, events } from "./utils/events";
+import { createScript, attrib } from "../../utils/createScriptDecorator";
+import { entityTags } from "../../utils/tags";
+import { ebEvents, events } from "../../utils/events";
 
-import { OnCollisionStart } from "./types/lifecycle";
-import { ScriptTypeBase } from "./types/ScriptTypeBase";
+import { OnCollisionStart } from "../../types/lifecycle";
+import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 import { falledCheckEvents } from "./falledCheck";
 
 @createScript("playerMovement")

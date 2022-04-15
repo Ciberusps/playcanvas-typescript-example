@@ -1,11 +1,11 @@
-import { ScriptTypeBase } from "./types/ScriptTypeBase";
-import { OnCollisionEnd, OnCollisionStart } from "./types/lifecycle";
+import { ScriptTypeBase } from "../../types/ScriptTypeBase";
+import { OnCollisionEnd, OnCollisionStart } from "../../types/lifecycle";
 
-import { getCollisionHeight } from "./utils";
-import { createScript, attrib } from "./utils/createScriptDecorator";
-import { events } from "./utils/events";
-import { IS_DEV } from "./utils/config";
-import { entityTags } from "./utils/tags";
+import { getCollisionHeight } from "../../utils";
+import { createScript, attrib } from "../../utils/createScriptDecorator";
+import { events } from "../../utils/events";
+import { IS_DEV } from "../../utils/config";
+import { entityTags } from "../../utils/tags";
 
 // for script debugging change on true TODO: debug subsystem
 const IS_DEBUG = IS_DEV && false;

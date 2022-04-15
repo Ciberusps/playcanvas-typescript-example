@@ -1,10 +1,6 @@
-# ciberus-faraway-test
+# Playcanvas typescript example
 
-Test task commits - https://github.com/Ciberusps/ciberus-faraway-test/compare/34475dd22317a6af85e7c2eb54769c6b960bd336...9662e39cf557f6406e39fdf5e4beb53e0075b0cd
-
-Project - https://playcanvas.com/project/883292/overview/ciberus_test_task
-branch - `feature/test-task`
-DefaultGym(scene) for testing purposes
+Project - https://playcanvas.com/project/913369/overview/typescript-example
 
 Build - https://playcanv.as/p/DysznB0H
 
@@ -28,7 +24,7 @@ Build - https://playcanv.as/p/DysznB0H
 ## Improvements
 
 - typescript classes cant inherit methods types from parent and also methods cant be arrow functions because they lost "this" may be somehow methods can be binded in createScriptDecorator but i didnt found how
-- "debug subsystem" like ue4, map with flags that turn on/off debugCategories, should be invoked from dev tools console like `debugSubsystem("%system_name%", true)`  
+- "debug subsystem" like ue4, map with flags that turn on/off debugCategories, should be invoked from dev tools console like `debugSubsystem("%system_name%", true)`
 - probably refactor project code structure in ue4-like style
 
   ```src

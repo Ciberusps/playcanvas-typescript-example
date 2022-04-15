@@ -1,10 +1,10 @@
-import EnemyHpBarView from "./ui/enemyHpBarView";
-import { falledCheckEvents } from "./falledCheck";
+import EnemyHpBarView from "../ui/enemyHpBarView";
+import { falledCheckEvents } from "../components/movement/falledCheck";
 
-import { createScript, attrib } from "./utils/createScriptDecorator";
-import { ebEvents } from "./utils/events";
+import { createScript, attrib } from "../utils/createScriptDecorator";
+import { ebEvents } from "../utils/events";
 
-import { ScriptTypeBase } from "./types/ScriptTypeBase";
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 @createScript("enemy")
 class Enemy extends ScriptTypeBase {

@@ -1,11 +1,11 @@
 import "./characters/player";
-import "./playerMovement";
-import "./camera";
-import "./shooting";
-import "./enemy";
-import "./falledCheck";
-import "./spawner";
-import "./lookAtMainCamera";
+import "./components/movement/playerMovement";
+import "./components/camera";
+import "./components/weapon/shooting";
+import "./characters/enemy";
+import "./components/movement/falledCheck";
+import "./components/spawner";
+import "./components/movement/lookAtMainCamera";
 
 import "./ui/enemyHpBarView";
 import "./ui/playerScoreView";

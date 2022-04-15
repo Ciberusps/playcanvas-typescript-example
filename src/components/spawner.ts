@@ -1,11 +1,11 @@
-import { ScriptTypeBase } from "./types/ScriptTypeBase";
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
-import { getCollisionHeight, randomNumberInRange } from "./utils";
-import { IS_DEV } from "./utils/config";
-import { attrib, createScript } from "./utils/createScriptDecorator";
-import { events } from "./utils/events";
-import { ebEvents } from "./utils/events";
-import { entityTags } from "./utils/tags";
+import { getCollisionHeight, randomNumberInRange } from "../utils";
+import { IS_DEV } from "../utils/config";
+import { attrib, createScript } from "../utils/createScriptDecorator";
+import { events } from "../utils/events";
+import { ebEvents } from "../utils/events";
+import { entityTags } from "../utils/tags";
 
 // for better spawning NavMesh required
 // so for now we will get positions of enemies and player on the level
