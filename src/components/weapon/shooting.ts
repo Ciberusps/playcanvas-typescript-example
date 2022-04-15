@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../../utils/createScriptDecorator";
-import { ebEvents, events, TOnWeaponAmmoChangedEvent } from "../../utils/events";
+import { ebEvents, lifecycleEvents, TWeaponAmmoChangedEvent } from "../../utils/events";
 
 const defaultAmmoCount = 30;
 
@@ -51,7 +51,7 @@ class Shooting extends ScriptTypeBase {
     this.app.mouse.on(pc.EVENT_MOUSEDOWN, this.onMouseDown, this);
     this.app.mouse.on(pc.EVENT_MOUSEUP, this.onMouseUp, this);
     this.app.keyboard.on(pc.EVENT_KEYDOWN, this.onKeyDown, this);
-    this.on?.(events.destroy, this.onDestroy, this);
+    this.on?.(lifecycleEvents.destroy, this.onDestroy, this);
   }
 
   onDestroy() {
@@ -63,7 +63,7 @@ class Shooting extends ScriptTypeBase {
   setAmmo(newAmmo: number) {
     this.ammo = newAmmo;
 
-    const data: TOnWeaponAmmoChangedEvent = {
+    const data: TWeaponAmmoChangedEvent = {
       ammo: this.ammo,
       totalAmmo: Number.POSITIVE_INFINITY,
     };

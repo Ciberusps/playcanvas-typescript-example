@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../utils/createScriptDecorator";
-import { ebEvents, events, TWeaponAmmoChangedEvent } from "../utils/events";
+import { ebEvents, lifecycleEvents, TWeaponAmmoChangedEvent } from "../utils/events";
 
 @createScript("playerAmmoView")
 class PlayerAmmoView extends ScriptTypeBase {
@@ -15,7 +15,7 @@ class PlayerAmmoView extends ScriptTypeBase {
       console.warn("[PlayerAmmoView] scoreCountText and text element on it required");
     }
     this.app.on(ebEvents["weapon:ammo:changed"], this.updateValues, this);
-    this.on?.(events.destroy, this.onDestroy, this);
+    this.on?.(lifecycleEvents.destroy, this.onDestroy, this);
   }
 
   onDestroy() {

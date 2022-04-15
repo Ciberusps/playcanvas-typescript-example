@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import { TJsonAttributeSchemaProp } from "../types/attributes";
 
-import { events } from "../utils/events";
+import { lifecycleEvents } from "../utils/events";
 import { createScript, attrib } from "../utils/createScriptDecorator";
 
 const pitchLimitScheme: TJsonAttributeSchemaProp[] = [
@@ -31,7 +31,7 @@ class Camera extends ScriptTypeBase {
     this.app.mouse.on(pc.EVENT_MOUSEDOWN, this.lockPointer, this);
     this.app.mouse.on(pc.EVENT_MOUSEMOVE, this.onMouseMove, this);
 
-    this.on?.(events.destroy, this.onDestroy, this);
+    this.on?.(lifecycleEvents.destroy, this.onDestroy, this);
   }
 
   onDestroy() {

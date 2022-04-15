@@ -71,3 +71,4 @@ export default Shooting;
 
 - typescript classes cant inherit methods types from parent and also methods cant be arrow functions because they lost "this" may be somehow methods can be binded in createScriptDecorator but i didnt found how
 - "debug subsystem" like ue4, map with flags that turn on/off debugCategories, should be invoked from dev tools console like `debugSubsystem("%system_name%", true)`
+- eslint

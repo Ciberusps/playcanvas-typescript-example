@@ -1,9 +1,8 @@
 import { ScriptTypeBase } from "../../types/ScriptTypeBase";
-import { OnCollisionEnd, OnCollisionStart } from "../../types/lifecycle";
 
 import { getCollisionHeight } from "../../utils";
 import { createScript, attrib } from "../../utils/createScriptDecorator";
-import { events } from "../../utils/events";
+import { lifecycleEvents } from "../../utils/events";
 import { IS_DEV } from "../../utils/config";
 import { entityTags } from "../../utils/tags";
 
@@ -36,8 +35,12 @@ class FalledCheck extends ScriptTypeBase {
       IS_DEV && console.warn("[falledCheck] rigidbody and collision required");
       return;
     }
-    this.entity.rigidbody?.on(events.collisionstart, this.onCollisionStart, this);
-    this.entity.rigidbody?.on(events.collisionend, this.onCollisionEnd, this);
+    this.entity.rigidbody?.on(
+      lifecycleEvents.collisionstart,
+      this.onCollisionStart,
+      this
+    );
+    this.entity.rigidbody?.on(lifecycleEvents.collisionend, this.onCollisionEnd, this);
   }
 
   checkIsFalled() {
@@ -67,13 +70,13 @@ class FalledCheck extends ScriptTypeBase {
     }
   }
 
-  onCollisionStart: OnCollisionStart = function (result) {
+  onCollisionStart(result: pc.ContactResult) {
     if (!result.other.tags.has(entityTags.ground)) return;
     clearTimeout(this.fallTimer);
-  };
+  }
 
-  onCollisionEnd: OnCollisionEnd = function (result) {
+  onCollisionEnd(result: pc.Entity) {
     if (!result.tags.has(entityTags.ground)) return;
     this.fallTimer = setTimeout(this.checkIsFalled.bind(this), this.checkDelay * 1000);
-  };
+  }
 }

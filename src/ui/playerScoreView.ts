@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../utils/createScriptDecorator";
-import { ebEvents, events, TPlayerScoreChangedEvent } from "../utils/events";
+import { ebEvents, lifecycleEvents, TPlayerScoreChangedEvent } from "../utils/events";
 
 @createScript("playerScoreView")
 class PlayerScoreView extends ScriptTypeBase {
@@ -13,7 +13,7 @@ class PlayerScoreView extends ScriptTypeBase {
       console.warn("[PlayerScoreView] scoreCountText and text element on it required");
     }
     this.app.on(ebEvents["player:score:changed"], this.updateValues, this);
-    this.on?.(events.destroy, this.onDestroy, this);
+    this.on?.(lifecycleEvents.destroy, this.onDestroy, this);
   }
 
   onDestroy() {

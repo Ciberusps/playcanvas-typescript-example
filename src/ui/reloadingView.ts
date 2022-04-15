@@ -1,7 +1,7 @@
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../utils/createScriptDecorator";
-import { ebEvents, events } from "../utils/events";
+import { ebEvents, lifecycleEvents } from "../utils/events";
 
 @createScript("reloadingView")
 class ReloadingView extends ScriptTypeBase {
@@ -13,7 +13,7 @@ class ReloadingView extends ScriptTypeBase {
       console.warn("[ReloadingView] reloadingText and text element on it required");
     }
     this.app.on(ebEvents["weapon:reloading:changed"], this.updateValues, this);
-    this.on?.(events.destroy, this.onDestroy, this);
+    this.on?.(lifecycleEvents.destroy, this.onDestroy, this);
   }
 
   onDestroy() {

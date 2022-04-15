@@ -1,10 +1,9 @@
 import { ScriptTypeBase } from "../../types/ScriptTypeBase";
-import { OnCollisionStart } from "../../types/lifecycle";
 
 import { falledCheckEvents } from "./falledCheck";
 
 import { createScript, attrib } from "../../utils/createScriptDecorator";
-import { ebEvents, events } from "../../utils/events";
+import { ebEvents, lifecycleEvents } from "../../utils/events";
 import { entityTags } from "../../utils/tags";
 
 @createScript("playerMovement")
@@ -20,19 +19,23 @@ class PlayerMovement extends ScriptTypeBase {
   jumpPower: number;
 
   initialize() {
-    this.entity.rigidbody?.on(events.collisionstart, this.onCollisionStart, this);
+    this.entity.rigidbody?.on(
+      lifecycleEvents.collisionstart,
+      this.onCollisionStart,
+      this
+    );
 
     this.entity.on?.(falledCheckEvents.falled, this.onFalled, this);
   }
 
-  onCollisionStart: OnCollisionStart = function (result) {
+  onCollisionStart(result: pc.ContactResult) {
     const { tags } = result.other;
     if (!tags.has(entityTags.ground, entityTags.damageable)) {
       return;
     }
 
     this.jumpAvailable = true;
-  };
+  }
 
   onFalled() {
     this.app.fire(ebEvents["player:falled"], this.entity);

@@ -3,7 +3,7 @@ import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import { getCollisionHeight, randomNumberInRange } from "../utils";
 import { attrib, createScript } from "../utils/createScriptDecorator";
 import { IS_DEV } from "../utils/config";
-import { events } from "../utils/events";
+import { lifecycleEvents } from "../utils/events";
 import { ebEvents } from "../utils/events";
 import { entityTags } from "../utils/tags";
 
@@ -40,7 +40,7 @@ class Spawner extends ScriptTypeBase {
     this.app.on(ebEvents["player:falled"], this.spawnAtRandomPoint, this);
     this.app.on(ebEvents["enemy:died"], this.spawnAtRandomPoint, this);
 
-    this.on?.(events.destroy, this.onDestroy, this);
+    this.on?.(lifecycleEvents.destroy, this.onDestroy, this);
   }
 
   onDestroy() {

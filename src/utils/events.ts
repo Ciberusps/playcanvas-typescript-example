@@ -1,9 +1,10 @@
 // remove then playcanvas add types for default events
-export const events = {
+export const lifecycleEvents = {
   contact: "contact",
   collisionend: "collisionend",
   collisionstart: "collisionstart",
   destroy: "destroy",
+  update: "update",
 };
 
 // EventBus(this.app.on/fire) events
@@ -15,7 +16,5 @@ export const ebEvents = {
   "enemy:died": "enemy:died",
 };
 
-// TODO: replace with updateValues(data: TOnPlayerScoreChanged);
-// search ctrl + shift + f -> OnCollisionStart
 export type TPlayerScoreChangedEvent = { newScore: number };
 export type TWeaponAmmoChangedEvent = { ammo: number; totalAmmo: number };
