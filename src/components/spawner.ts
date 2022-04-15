@@ -7,9 +7,6 @@ import { lifecycleEvents } from "../utils/events";
 import { ebEvents } from "../utils/events";
 import { entityTags } from "../utils/tags";
 
-// for better spawning NavMesh required
-// so for now we will get positions of enemies and player on the level
-// and create "spawnPoints" on start
 @createScript("spawner")
 class Spawner extends ScriptTypeBase {
   @attrib({ type: "asset", assetType: "template" })
@@ -50,7 +47,7 @@ class Spawner extends ScriptTypeBase {
 
   spawnAtRandomPoint(entity: pc.Entity) {
     // here "sweep test" should be used - sweep a shape down(box, capsule...)
-    // and check if something blocks spawn here will use lazy way
+    // and check if something blocks spawn
     const randomIdx = randomNumberInRange(0, this.spawnPositions.length);
 
     let spawnPoint = this.spawnPositions[randomIdx];

@@ -1,8 +1,6 @@
 import { TAttributeParams } from "./attributes";
-// PCT - PlayCanvasTypes abbreviated for shortness
-// Should be used to make class methods typed
-// ref https://github.com/Glidias/playcanvas-typescript-babel-intellisense-template/tree/6a35dab6d229c3857673e56861b34cc1a658cb54
 
+// Base class to inherit from for script types
 export class ScriptTypeBase {
   // custom holder to contain attributesData used for initialization of attributes
   attributesData?: { [key: string]: TAttributeParams };
