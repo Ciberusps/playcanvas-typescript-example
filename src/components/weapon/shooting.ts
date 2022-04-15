@@ -55,9 +55,9 @@ class Shooting extends ScriptTypeBase {
   }
 
   onDestroy() {
-    this.app.mouse.off(pc.EVENT_MOUSEDOWN, this.onMouseDown);
-    this.app.mouse.off(pc.EVENT_MOUSEUP, this.onMouseUp);
-    this.app.keyboard.off(pc.EVENT_KEYDOWN, this.onKeyDown);
+    this.app.mouse.off(pc.EVENT_MOUSEDOWN, this.onMouseDown, this);
+    this.app.mouse.off(pc.EVENT_MOUSEUP, this.onMouseUp, this);
+    this.app.keyboard.off(pc.EVENT_KEYDOWN, this.onKeyDown, this);
   }
 
   setAmmo(newAmmo: number) {
