@@ -19,13 +19,13 @@ const pitchLimitScheme: TJsonAttributeSchemaProp[] = [
 
 @createScript("camera")
 class Camera extends ScriptTypeBase {
-  rotationX: number = 0;
-  rotationY: number = 0;
-
   @attrib({ type: "vec2", default: [0.15, 0.1] })
   sensivity: pc.Vec2;
   @attrib({ type: "json", schema: pitchLimitScheme })
   pitchLimit: { min: number; max: number };
+
+  rotationX: number = 0;
+  rotationY: number = 0;
 
   initialize() {
     this.app.mouse.on(pc.EVENT_MOUSEDOWN, this.lockPointer, this);
