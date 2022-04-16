@@ -2,7 +2,7 @@
 
 Project - https://playcanvas.com/project/913369/overview/typescript-example
 
-Build - https://playcanv.as/p/DysznB0H
+Build - https://playcanv.as/p/KRxr5lon/
 
 ## Setup
 
@@ -10,9 +10,12 @@ Build - https://playcanv.as/p/DysznB0H
 - Copy `.pcconfig` to your home directory e.g.
   - windows - `C:/Users/<username>`
   - macos - `/Users/<username>`
-- Copy `pcconfig.example.json` and rename to `pcconfig.json`. This file is needed to configure playcanvas-sync to upload the file to correct PlayCanvas Editor project.
-- In `pcconfig.json` fill `PLAYCANVAS_API_KEY`, `PLAYCANVAS_BRANCH_ID`, `PLAYCANVAS_PROJECT_ID` using https://github.com/playcanvas/playcanvas-sync#config-variables
-- now you ready to go start `npm run dev`
+- Copy `pcconfig.example.json` and rename to `pcconfig.json`. This file is needed to configure playcanvas-sync to sync script files to correct playcanvas project.
+- In `pcconfig.json` using [playcanvas-sync guide](https://github.com/playcanvas/playcanvas-sync#config-variables) fill this environment variables
+  - `PLAYCANVAS_API_KEY`
+  - `PLAYCANVAS_BRANCH_ID`
+  - `PLAYCANVAS_PROJECT_ID`
+- now you ready to go - `npm run dev`
 
 ## npm scripts
 
@@ -66,9 +69,3 @@ class Shooting extends ScriptTypeBase {
 // default export at the end
 export default Shooting;
 ```
-
-## Improvements
-
-- typescript classes cant inherit methods types from parent and also methods cant be arrow functions because they lost "this" may be somehow methods can be binded in createScriptDecorator but i didnt found how
-- "debug subsystem" like ue4, map with flags that turn on/off debugCategories, should be invoked from dev tools console like `debugSubsystem("%system_name%", true)`
-- eslint
