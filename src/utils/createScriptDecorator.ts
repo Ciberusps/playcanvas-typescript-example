@@ -12,26 +12,25 @@ import { ScriptTypeBase } from "../types/ScriptTypeBase";
  */
 export function createScript(name: string) {
   return function (obj: any) {
-    // @ts-ignore
     const instance = new obj();
     const script: any = pc.createScript(name);
 
-    instance.attributesData = instance.attributesData || {};
     // Add public attributes accessible in the editor
-    for (let attr in instance.attributesData) {
+    instance.attributesData = instance.attributesData || {};
+    for (const attr in instance.attributesData) {
       script.attributes.add(attr, instance.attributesData[attr]);
     }
 
     // Add instance properties and methods to prototype
-    let proto = script.prototype;
-    for (let prop in instance) {
+    const proto = script.prototype;
+    for (const prop in instance) {
       if (prop !== "attributes" && !instance?.attributesData?.[prop]) {
         proto[prop] = instance?.[prop];
       }
     }
 
     // Add static properties
-    for (let prop in obj) {
+    for (const prop in obj) {
       script[prop] = obj?.[prop];
     }
   };

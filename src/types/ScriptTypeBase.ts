@@ -9,7 +9,6 @@ export class ScriptTypeBase {
   getScript<T>(entity: pc.Entity, scriptName: string): T | undefined {
     const script = entity.script?.get(scriptName);
     if (!script) {
-      // @ts-ignore
       console.error(`[${this.entity.name}] Script ${scriptName} not found`);
       return;
     }

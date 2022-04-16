@@ -13,7 +13,8 @@
     "prettier:check": "cross-var prettier --check $npm_package_config_prettier_pattern",
     "prettier:all": "cross-var prettier --write $npm_package_config_prettier_pattern",
     "prettier:staged": "prettier --write",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts"
   },
   "config": {
     "prettier_pattern": "**/*.{js,jsx,ts,tsx,json,css,scss,md}"
@@ -21,8 +22,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "concurrently": "^7.0.0",
     "cross-var": "^1.1.0",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
     "playcanvas": "^1.53.1",
     "playcanvas-sync": "github:playcanvas/playcanvas-sync#acc64ec5b7ec8ba36f786424c217fc3c6912ae31",
     "prettier": "^2.5.1",
