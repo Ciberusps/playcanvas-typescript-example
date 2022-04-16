@@ -79,3 +79,5 @@ class FalledCheck extends ScriptTypeBase {
     this.fallTimer = setTimeout(this.checkIsFalled.bind(this), this.checkDelay * 1000);
   }
 }
+
+export default FalledCheck;

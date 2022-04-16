@@ -54,3 +54,5 @@ class Camera extends ScriptTypeBase {
     this.entity.setLocalEulerAngles(this.rotationX, this.rotationY, 0);
   }
 }
+
+export default Camera;

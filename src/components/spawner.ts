@@ -63,3 +63,5 @@ class Spawner extends ScriptTypeBase {
     }
   }
 }
+
+export default Spawner;

@@ -73,3 +73,5 @@ class PlayerMovement extends ScriptTypeBase {
     this.direction.set(0, this.direction.y, 0);
   }
 }
+
+export default PlayerMovement;
