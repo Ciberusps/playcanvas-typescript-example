@@ -6,6 +6,7 @@ import { createScript, attrib } from "../../utils/createScriptDecorator";
 import { lifecycleEvents } from "../../utils/events";
 import { entityTags } from "../../utils/tags";
 import { IS_DEV } from "../../utils/config";
+import TraceUtils from "../../utils/traceUtils";
 
 export const falledCheckEvents = { falled: "falled" };
 const groundOffset = 0.05;
@@ -58,11 +59,7 @@ class FalledCheck extends ScriptTypeBase {
       console.log("Raycast to find the 'ground'", { halfHeight, position, from, to });
     }
 
-    // @ts-ignore
-    const result: pc.RaycastResult | undefined = this.app.systems.rigidbody.raycastFirst(
-      from,
-      to
-    );
+    const result = TraceUtils.raycastFirst(this.app, from, to);
 
     if (!result || !result?.entity?.tags?.has(entityTags.ground)) {
       if (isDebug) {

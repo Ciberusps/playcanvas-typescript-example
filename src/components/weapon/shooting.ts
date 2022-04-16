@@ -2,6 +2,7 @@ import { ScriptTypeBase } from "../../types/ScriptTypeBase";
 
 import { createScript, attrib } from "../../utils/createScriptDecorator";
 import { ebEvents, lifecycleEvents, TWeaponAmmoChangedEvent } from "../../utils/events";
+import TraceUtils from "../../utils/traceUtils";
 
 const defaultAmmoCount = 30;
 
@@ -103,8 +104,7 @@ class Shooting extends ScriptTypeBase {
     const from = cameraComponent.screenToWorld(x, y, cameraComponent.nearClip);
     const to = cameraComponent.screenToWorld(x, y, cameraComponent.farClip);
 
-    // @ts-ignore
-    const result: pc.RaycastResult = this.app.systems.rigidbody.raycastFirst(from, to);
+    const result = TraceUtils.raycastFirst(this.app, from, to);
 
     if (!result || !result.entity.tags.has("damageable")) return;
     result.entity.fire("damage", 1);

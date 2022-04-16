@@ -12,7 +12,8 @@
     "build": "webpack && node node_modules/playcanvas-sync/pcsync.js pushAll",
     "prettier:check": "cross-var prettier --check $npm_package_config_prettier_pattern",
     "prettier:all": "cross-var prettier --write $npm_package_config_prettier_pattern",
-    "prettier:staged": "prettier --write"
+    "prettier:staged": "prettier --write",
+    "typecheck": "tsc --noEmit"
   },
   "config": {
     "prettier_pattern": "**/*.{js,jsx,ts,tsx,json,css,scss,md}"
