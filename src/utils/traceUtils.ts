@@ -10,6 +10,11 @@ const TraceUtils = {
     }
     return app.systems.rigidbody?.raycastFirst(start, end);
   },
+  // TODO: sweep tests, raycastAll, etc.
+  // SweepCapsuleSingleByChannel
+  // SweepSphereSingleByChannel
+  // OverlapCapsuleAnyByProfile
+  // OverlapBlockingTestByProfile
 };
 
 export default TraceUtils;
