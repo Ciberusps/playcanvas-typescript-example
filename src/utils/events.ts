@@ -1,4 +1,3 @@
-// remove then playcanvas add types for default events
 export const lifecycleEvents = {
   contact: "contact",
   collisionend: "collisionend",
