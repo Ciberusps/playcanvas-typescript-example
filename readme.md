@@ -4,6 +4,8 @@ Project - https://playcanvas.com/project/913369/overview/typescript-example
 
 Build - https://playcanv.as/p/KRxr5lon/
 
+Forum post - https://forum.playcanvas.com/t/example-template-project-with-typescript/25272
+
 ## Setup
 
 - Install dependencies `npm i`
